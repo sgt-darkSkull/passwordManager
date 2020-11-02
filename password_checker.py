@@ -43,17 +43,18 @@ def check_password_api(password):
     return read_response(response, rem_char)
     
 
-if __name__ == "__main__":
+def main():
 
     try:
-        args = sys.argv[1:]
-        
-        for password in args:
-            count = check_password_api(password)
 
-            if count:
-                print(f'Your password was found in {count} data breaches')
-            else:
-                print('Password is good to Go, Safe and Secure!')
+        print('Enter password', end=' : ')
+        passwd = input()
+
+        count = check_password_api(passwd)
+
+        if count:
+            print(f'Your password was found in {count} data breaches')
+        else:
+            print('Password is good to Go, Safe and Secure!')
     except:
         raise RuntimeError(f'An error occurred, check your internet connection')

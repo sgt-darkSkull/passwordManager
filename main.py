@@ -1,16 +1,48 @@
-# This is a sample Python script.
-
-# Press Ctrl+F5 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press F9 to toggle the breakpoint.
+from styling import color
+import password_checker
+import password_generator
+import user
 
 
-# Press the green button in the gutter to run the script.
+def main():
+    while True:
+        print(color.BOLD + color.RED + 'Project Manager'.center(30) + color.END)
+
+        print('1. Login')
+        print('2. Sign Up')
+        print('3. Generate a strong password')
+        print('4. Check my password if secure')
+        print('5. Exit')
+
+        ch = input().lower()
+
+        if ch == '1' or ch == 'login':
+            user.user_login()
+
+        elif ch == '2' or ch == 'sign':
+            user.user_signup()
+
+        elif ch == '3' or ch == 'generate':
+
+            password_generator.main()
+
+        elif ch == '4' or ch == 'check':
+            password_checker.main()
+
+        elif ch == '5' or ch == 'exit':
+            return
+
+        else:
+            print('Invalid Choice!')
+
+        print('Want to Exit Program (Y/N) : ', end='')
+        en = input().lower()
+
+        if en == 'y':
+            return
+        else:
+            pass
+
+
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    main()
