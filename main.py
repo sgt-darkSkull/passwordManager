@@ -48,6 +48,7 @@ def main():
             pass
 
 
+# Main Program Starts
 if __name__ == '__main__':
 
     if not os.path.exists('database.sqlite'):

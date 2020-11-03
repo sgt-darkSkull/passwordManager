@@ -5,7 +5,7 @@ import password_checker
 import password_generator
 
 
-
+# Login Main class
 class Login:
 
     def __init__(self):
@@ -37,67 +37,72 @@ class Login:
         for n, web in enumerate(arr):
             print(f'{n + 1}. {web}')
 
-        self.website = input('Select Website : ')
+        if len(arr) > 0:
+            n = input('Select Website : ')
+            if n.isnumeric() and len(n) == 1:
+                self.website = arr[int(n) - 1]
+            else:
+                self.website = n
+            return True
+        else:
+            print('No password is saved')
+            return False
 
     def get_Account(self, arr):
         for n, acc in enumerate(arr):
             print(f'{n + 1}. {acc}')
 
-        self.account = input('Select Account :')
+        n = input('Select Account : ')
+        if n.isnumeric() and len(n) == 1:
+            self.account = arr[int(n) - 1]
+        else:
+            self.account = n
+
+    def select(self):
+        websites = sql.all_websites(self.username)
+        present = self.get_Website(websites)
+        if present:
+            accounts = sql.all_accounts(self.username, self.website)
+            self.get_Account(accounts)
+            return True
+        return False
 
     def add_password(self):
         os.system('clear')
-        print(color.BOLD + color.RED + 'Add Password'.center(30) + color.END)
-        print('')
+        print(color.BOLD + color.RED + 'Add Password'.center(30) + color.END + '\n')
+
         url = input('Website/Url : ')
         identifier = input('Account/Username/Identifier : ')
         password = input('Password : ')
+
         sql.add_password(url, identifier, password, self.username)
 
     def delete_password(self):
         os.system('clear')
         print(color.BOLD + color.RED + 'Delete Passwrod'.center(30) + color.END)
         print('')
-        ## print(all website)
-
-        web = input('Select Website : ')
-        # print all accounts for the website
-        acc = input('Select Account :')
-        # print confirmation message
-        # print success message
-        return
+        if self.select():
+            sql.delete(self.username, self.website, self.account)
 
     def modify_password(self):
         os.system('clear')
         print(color.BOLD + color.RED + 'Modify Password'.center(30) + color.END)
         print('')
-        # print(all website)
-        web = input('Select Website : ')
-        # print all accounts for the website
-        acc = input('Select Account :')
 
-        if input('Want to generate Password (Y/N): ').lower() == 'y':
-            password_generator.main()
+        if self.select():
+            if input('Want to generate Password (Y/N): ').lower() == 'y':
+                password_generator.main()
 
-        new_pass = input('New Password : ')
-
-        # execute SQL query
-        # print confirmation message
-        # print success message
-        return
+            new_pass = input('New Password : ')
+            sql.modify(self.username, self.website, self.account, new_pass)
 
     def show_password(self):
         os.system('clear')
         print(color.BOLD + color.RED + 'Show Password'.center(30) + color.END)
         print('')
 
-        websites = sql.all_websites(self.username)
-        self.get_Website(websites)
-
-        accounts = sql.all_accounts(self.username, self.website)
-        self.get_Account(accounts)
-
-        sql.show_password(self.username, self.website, self.account)
+        if self.select():
+            sql.show_password(self.username, self.website, self.account)
 
         return
 
@@ -134,7 +139,7 @@ class Login:
             else:
                 print('Invalid Choice!')
 
-            en = input('Want to Log Out? (Y/N) : ').lower()
+            en = input("'Y' to Log out, or press Enter....").lower()
 
             if en == 'y':
                 return

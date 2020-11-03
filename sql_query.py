@@ -5,6 +5,7 @@ import os
 def check_for_database():
     return os.path.exists('database.sqlite')
 
+
 def createDatabase():
     conn = sqlite3.connect('database.sqlite')
     c = conn.cursor()
@@ -49,13 +50,13 @@ def add_password(website, identifier, password, table):
     else:
         print('Database is not connected.\nRestart the program.')
 
-def get_user_Password(user):
 
+def get_user_Password(user):
     if check_for_database():
         conn = sqlite3.connect('database.sqlite')
         c = conn.cursor()
 
-        command_selectPassword = 'SELECT Password FROM Users WHERE Name = "' + user +'";'
+        command_selectPassword = 'SELECT Password FROM Users WHERE Name = "' + user + '";'
 
         passwd = str(*list(*c.execute(command_selectPassword)))
         conn.commit()
@@ -65,16 +66,16 @@ def get_user_Password(user):
     else:
         print('Database is not connected.\nRestart the program.')
 
-def all_websites(user):
 
+def all_websites(user):
     if check_for_database():
         conn = sqlite3.connect('database.sqlite')
         c = conn.cursor()
 
-        command_website = 'SELECT Website FROM "'+ user + '"'
+        command_website = 'SELECT DISTINCT Website FROM "' + user + '"'
         tup = c.execute(command_website)
 
-        websites = [ list(row)[0] for row in tup]
+        websites = [list(row)[0] for row in tup]
         conn.commit()
         conn.close()
 
@@ -85,7 +86,6 @@ def all_websites(user):
 
 
 def all_accounts(user, website):
-
     if check_for_database():
         conn = sqlite3.connect('database.sqlite')
         c = conn.cursor()
@@ -119,8 +119,42 @@ def show_password(user, web, account):
 
         conn.commit()
         conn.close()
+    else:
+        print('Database is not connected.\nRestart the program.')
 
-        # return passwords
+
+def delete(user, website, account):
+    if check_for_database():
+        conn = sqlite3.connect('database.sqlite')
+        c = conn.cursor()
+
+        command_delete = f'DELETE FROM "{user}" ' \
+                         f'WHERE Website LIKE "%{website}%" ' \
+                         f'AND Account LIKE "%{account}%" ;'
+
+        c.execute(command_delete)
+
+        conn.commit()
+        conn.close()
+
+    else:
+        print('Database is not connected.\nRestart the program.')
+
+
+def modify(user, website, account, password):
+    if check_for_database():
+        conn = sqlite3.connect('database.sqlite')
+        c = conn.cursor()
+
+        command_modify = f'UPDATE "{user}" ' \
+                         f'SET Password = "{password}" ' \
+                         f'WHERE Account = "{account}" ' \
+                         f'AND Website = "{website}" ;'
+
+        c.execute(command_modify)
+
+        conn.commit()
+        conn.close()
 
     else:
         print('Database is not connected.\nRestart the program.')

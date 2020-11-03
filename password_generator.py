@@ -2,6 +2,8 @@ import random
 import array
 
 
+# Generates password
+
 class LowerBound(Exception):
     pass
 
