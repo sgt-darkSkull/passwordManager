@@ -3,6 +3,7 @@ from styling import color
 import password_checker
 import password_generator
 import user
+import sql_query
 
 
 def main():
@@ -51,8 +52,12 @@ if __name__ == '__main__':
 
     if not os.path.exists('database.sqlite'):
         print('Looks like you are running this program first time...')
-        print('We are creating setting up your files..')
+        print('We are setting up your files..')
         print('Please wait a few seconds..😄')
-        os.system('sleep 10s')
+        sql_query.createDatabase()
+        os.system('sleep 2s')
 
-    main()
+    if os.path.exists('database.sqlite'):
+        main()
+    else:
+        print('An Error Occurred, can not continue!')

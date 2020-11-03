@@ -1,14 +1,19 @@
 import os
-
+import sql_query as sql
 from styling import color
 import password_checker
 import password_generator
+
+
 
 class Login:
 
     def __init__(self):
         self.username = ''
         self.password = ''
+        self.is_login = False
+        self.website = ''
+        self.account = ''
 
         try:
             os.system('clear')
@@ -17,12 +22,28 @@ class Login:
             self.username = input('Enter Username : ')
             self.password = input('Enter Password : ')
 
+            auth = sql.get_user_Password(self.username)
+
+            if auth == self.password:
+                self.is_login = True
+            else:
+                self.is_login = False
+
         except:
             print('An Error Occurred!')
             return
 
-    def verify(self):
-        pass
+    def get_Website(self, arr):
+        for n, web in enumerate(arr):
+            print(f'{n + 1}. {web}')
+
+        self.website = input('Select Website : ')
+
+    def get_Account(self, arr):
+        for n, acc in enumerate(arr):
+            print(f'{n + 1}. {acc}')
+
+        self.account = input('Select Account :')
 
     def add_password(self):
         os.system('clear')
@@ -31,19 +52,19 @@ class Login:
         url = input('Website/Url : ')
         identifier = input('Account/Username/Identifier : ')
         password = input('Password : ')
-
-        # execute SQL Query
+        sql.add_password(url, identifier, password, self.username)
 
     def delete_password(self):
         os.system('clear')
         print(color.BOLD + color.RED + 'Delete Passwrod'.center(30) + color.END)
         print('')
-        #print(all website)
+        ## print(all website)
+
         web = input('Select Website : ')
-        #print all accounts for the website
+        # print all accounts for the website
         acc = input('Select Account :')
-        #print confirmation message
-        #print success message
+        # print confirmation message
+        # print success message
         return
 
     def modify_password(self):
@@ -60,7 +81,7 @@ class Login:
 
         new_pass = input('New Password : ')
 
-        #execute SQL query
+        # execute SQL query
         # print confirmation message
         # print success message
         return
@@ -69,12 +90,15 @@ class Login:
         os.system('clear')
         print(color.BOLD + color.RED + 'Show Password'.center(30) + color.END)
         print('')
-        # print(all website)
-        web = input('Select Website : ')
-        # print all accounts for the website
-        acc = input('Select Account :')
-        # print confirmation message
-        # print success message
+
+        websites = sql.all_websites(self.username)
+        self.get_Website(websites)
+
+        accounts = sql.all_accounts(self.username, self.website)
+        self.get_Account(accounts)
+
+        sql.show_password(self.username, self.website, self.account)
+
         return
 
     def main(self):
@@ -120,7 +144,12 @@ class Login:
 
 def user_login():
     user = Login()
-    user.main()
+
+    if user.is_login:
+        user.main()
+    else:
+        print('Login Failure, Wrong password or username..')
+        return
 
 
 def user_signup():
@@ -131,8 +160,7 @@ def user_signup():
         username = input('Enter Username : ')
         password = input('Enter Password : ')
         if password == input('Confirm Password : '):
-            # execute SQL Querry
-            pass
+            sql.sign_up(username, password)
         else:
             print('Wrong Password...\nSign up failure!')
             return
