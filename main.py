@@ -1,3 +1,4 @@
+import os
 from styling import color
 import password_checker
 import password_generator
@@ -6,8 +7,10 @@ import user
 
 def main():
     while True:
-        print(color.BOLD + color.RED + 'Project Manager'.center(30) + color.END)
 
+        os.system('clear')
+        print(color.BOLD + color.GREEN + color.UNDERLINE + 'Password Manager'.center(30) + color.END)
+        print('')
         print('1. Login')
         print('2. Sign Up')
         print('3. Generate a strong password')
@@ -45,4 +48,11 @@ def main():
 
 
 if __name__ == '__main__':
+
+    if not os.path.exists('database.sqlite'):
+        print('Looks like you are running this program first time...')
+        print('We are creating setting up your files..')
+        print('Please wait a few seconds..😄')
+        os.system('sleep 10s')
+
     main()

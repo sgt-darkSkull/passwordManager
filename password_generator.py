@@ -1,9 +1,3 @@
-#! /usr/bin/python3
-
-'''
-Random Password Generator based of given word length
-'''
-
 import random
 import array
 
