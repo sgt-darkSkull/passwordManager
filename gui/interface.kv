@@ -1,0 +1,82 @@
+<MainInterface>:
+    PScreenManager:
+
+<PScreenManager>:
+	id: "s_manager"
+    MainScreen:
+    LoginScreen:
+
+
+<MainScreen>:
+	name: "main_screen"
+	MainLayout:
+
+
+<MainLayout>:
+	cols: 1
+	rows: 2
+	padding: (dp(20), 0, dp(20), dp(20))
+	Label:
+		text: "Password Manager"
+		#size_hint: 1, .4
+		font_name: "Kalam"
+		font_size: dp(30)
+	GridLayout:
+		rows: 3
+		padding: dp(40)
+		spacing: dp(20)
+		DispButtons:
+			text: "Login"
+			on_release: app.root.children[0].current = "login_screen"
+		DispButtons:
+			text: "Signup"
+		DispButtons:
+			text: "Check/Generate Password"
+
+
+<DispButtons@Button>:
+	#background_color: .25, .74, .89,0
+	background_color: .6, .2, .2,.3
+	font_size: dp(20)
+	canvas.before:
+		Color:
+			rgba: .6,.2,.2, 1
+		RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [dp(20),]
+
+<LoginScreen>:
+	name: "login_screen"
+	LoginLayout:
+
+
+<LoginLayout>:
+	cols: 1
+	rows: 2
+	padding: (dp(20), 0, dp(20), dp(20))
+	Label:
+		id: login_label
+		text: "Login Screen"
+		font_name: "Macondo"
+		font_size: dp(30)
+	GridLayout:
+		cols: 2
+		rows: 3
+		padding: dp(40)
+		spacing: dp(20)
+		Label:
+			text: "USERNAME: "
+		TextInput:
+			id: username
+			multiline: False
+		Label:
+			text: "PASSWORD"
+		TextInput:
+			id: passwd
+			multiline: False
+			password: True
+			password_mask: "#"
+		DispButtons:
+			text: "Login"
+			on_press: root.validate_login_request()
