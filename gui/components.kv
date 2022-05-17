@@ -1,0 +1,16 @@
+# Coloured Button
+<KvRoundButtonUi>:
+	background_color: 0,0,0,0
+	background_normal: ""
+	text: self.button_label_text
+	on_press: self.add_flash()
+	on_release: self.remove_flash()
+
+	canvas.before:
+		Color:
+			rgba: root.button_color[0], root.button_color[1], root.button_color[2], 1
+		RoundedRectangle:
+			id: rect_rounded_cover
+			pos: self.pos
+			size: self.size
+			radius: [dp(40),]

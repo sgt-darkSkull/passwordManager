@@ -61,22 +61,36 @@
 		font_name: "Macondo"
 		font_size: dp(30)
 	GridLayout:
-		cols: 2
+		cols: 1
 		rows: 3
 		padding: dp(40)
-		spacing: dp(20)
-		Label:
-			text: "USERNAME: "
-		TextInput:
-			id: username
-			multiline: False
-		Label:
-			text: "PASSWORD"
-		TextInput:
-			id: passwd
-			multiline: False
-			password: True
-			password_mask: "#"
-		DispButtons:
-			text: "Login"
-			on_press: root.validate_login_request()
+		spacing: dp(30)
+		GridLayout:
+			cols: 2
+			padding: dp(10)
+			Label:
+				text: "USERNAME: "
+			TextInput:
+				halign: 'center'
+				padding_y: [self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0]
+				id: username
+				multiline: False
+		GridLayout:
+			cols: 2
+			padding: dp(10)
+			Label:
+				text: "PASSWORD"
+			TextInput:
+				halign: 'center'
+				padding_y: [self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0]
+				id: passwd
+				multiline: False
+				password: True
+				password_mask: "*"
+		GridLayout:
+			cols: 1
+			KvRoundButtonUi:
+				id: "login_button"
+				button_color: .6, .2, .2
+				button_label_text: "Login"
+				on_press: root.validate_login_request()
