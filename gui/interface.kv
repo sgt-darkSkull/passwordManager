@@ -70,23 +70,17 @@
 			padding: dp(10)
 			Label:
 				text: "USERNAME: "
-			TextInput:
-				halign: 'center'
-				padding_y: [self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0]
+			KvTextFieldUi:
 				id: username
-				multiline: False
 		GridLayout:
 			cols: 2
 			padding: dp(10)
 			Label:
 				text: "PASSWORD"
-			TextInput:
-				halign: 'center'
-				padding_y: [self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0]
+			KvTextFieldUi:
 				id: passwd
-				multiline: False
 				password: True
-				password_mask: "*"
+				#password_mask: "*"
 		GridLayout:
 			cols: 1
 			KvRoundButtonUi:
