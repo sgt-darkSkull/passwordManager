@@ -1,0 +1,30 @@
+<MainScreen>:
+	name: "main_screen"
+	GridLayout:
+		cols: 1
+		rows: 2
+		padding: (dp(20), 0, dp(20), dp(20))
+		Label:
+			text: "Password Manager"
+			font_name: "Kalam"
+			font_size: dp(30)
+		GridLayout:
+			cols: 1
+			rows: 3
+			padding: dp(40)
+			spacing: dp(20)
+			KvRoundButtonUi:
+				text: "Login"
+				font_name: "Kalam"
+				button_color: .6, .2, .2
+				on_release: root.login_screen()
+			KvRoundButtonUi:
+				text: "Signup"
+				font_name: "Kalam"
+				button_color: .6, .2, .2
+				on_release: root.signup_screen()
+			KvRoundButtonUi:
+				text: "Check/Generate Password"
+				font_name: "Kalam"
+				button_color: .6, .2, .2
+				on_release: root.check_gen_screen()

@@ -1,5 +1,4 @@
-from gui.interface import Interface
+from gui.main_interface import Interface
 
 if __name__ == '__main__':
-
     Interface().run()

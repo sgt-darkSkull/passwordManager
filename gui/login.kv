@@ -1,0 +1,45 @@
+<LoginScreen>:
+	BoxLayout:
+		orientation: "vertical"
+		KvPreviousButtonUi:
+			on_release: root.back_main_screen()
+		LoginLayout:
+
+
+<LoginLayout>:
+	cols: 1
+	rows: 2
+	padding: (dp(20), 0, dp(20), dp(20))
+	Label:
+		id: login_label
+		text: "Login Screen"
+		font_name: "Macondo"
+		font_size: dp(30)
+	GridLayout:
+		cols: 1
+		rows: 3
+		padding: dp(40)
+		spacing: dp(30)
+		GridLayout:
+			cols: 2
+			padding: dp(10)
+			Label:
+				text: "USERNAME: "
+			KvTextFieldUi:
+				id: username
+		GridLayout:
+			cols: 2
+			padding: dp(10)
+			Label:
+				text: "PASSWORD"
+			KvTextFieldUi:
+				id: passwd
+				password: True
+				#password_mask: "*"
+		GridLayout:
+			cols: 1
+			KvRoundButtonUi:
+				id: "login_button"
+				button_color: .6, .2, .2
+				button_label_text: "Login"
+				on_press: root.validate_login_request()

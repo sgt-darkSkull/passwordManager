@@ -9,14 +9,14 @@ GUI Password Manager
 Password Manager
     package: ui
         module: ui_manager
-        module: MainInterface
-        module: Login
+        module: main_interface
+        module: login
             class: Login_Ui
             function: login_control
-        module: Signup
+        module: signup
             class: Signup_Ui
             function: signup_control
-        module: Check_Generate
+        module: check_generate
             class: Check_Generate_Ui
             function: check_generate_control
         module: components
