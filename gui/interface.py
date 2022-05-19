@@ -42,7 +42,6 @@ class LoginLayout(GridLayout):
 
         if username == "user1" and passwd == "user1":
             self.ids["login_label"].text = "Access Granted"
-    pass
 
 
 class Interface(App):

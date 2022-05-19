@@ -18,37 +18,34 @@
 	padding: (dp(20), 0, dp(20), dp(20))
 	Label:
 		text: "Password Manager"
-		#size_hint: 1, .4
 		font_name: "Kalam"
 		font_size: dp(30)
 	GridLayout:
 		rows: 3
 		padding: dp(40)
 		spacing: dp(20)
-		DispButtons:
-			text: "Login"
-			on_release: app.root.children[0].current = "login_screen"
-		DispButtons:
-			text: "Signup"
-		DispButtons:
-			text: "Check/Generate Password"
-
-
-<DispButtons@Button>:
-	#background_color: .25, .74, .89,0
-	background_color: .6, .2, .2,.3
-	font_size: dp(20)
-	canvas.before:
-		Color:
-			rgba: .6,.2,.2, 1
-		RoundedRectangle:
-            pos: self.pos
-            size: self.size
-            radius: [dp(20),]
+		KvRoundButtonUi:
+			button_color: .6, .2, .2
+			button_label_text: "Login"
+			on_release:
+				app.root.children[0].current = "login_screen"
+				root.parent.manager.transition.direction = "left"
+		KvRoundButtonUi:
+			button_color: .6, .2, .2
+			button_label_text: "Signup"
+		KvRoundButtonUi:
+			button_color: .6, .2, .2
+			button_label_text: "Check/Generate Password"
 
 <LoginScreen>:
 	name: "login_screen"
-	LoginLayout:
+	BoxLayout:
+		orientation: "vertical"
+		KvPreviousButtonUi:
+			on_release:
+				app.root.children[0].current = "main_screen"
+				root.manager.transition.direction = "right"
+		LoginLayout:
 
 
 <LoginLayout>:

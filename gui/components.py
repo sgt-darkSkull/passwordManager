@@ -20,6 +20,10 @@ class KvRoundButtonUi(Button):
         self.button_color = [self.button_color[0] + .09, self.button_color[1] + .09, self.button_color[2] + .09]
 
 
+class KvPreviousButtonUi(Button):
+    pass
+
+
 class KvTextFieldUi(TextInput):
     pass
 
