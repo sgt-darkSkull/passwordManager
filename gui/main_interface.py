@@ -3,6 +3,7 @@ from kivy.core.text import LabelBase
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.config import Config
 
+from gui.check_gen_password import CheckGenScreen
 from gui.login import LoginScreen
 from gui.signup import SignupScreen
 from gui.components import *
@@ -49,5 +50,8 @@ class Interface(App):
 
         ui.screens['signup_screen'] = SignupScreen(name="signup_screen")
         root.add_widget(ui.screens['signup_screen'])
+
+        ui.screens['check_gen_screen'] = CheckGenScreen(name="check_gen_screen")
+        root.add_widget(ui.screens['check_gen_screen'])
 
         return root
