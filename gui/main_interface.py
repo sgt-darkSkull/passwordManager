@@ -11,6 +11,7 @@ from gui import ui_manager as ui
 
 LabelBase.register(name='Macondo', fn_regular='assets/Macondo.ttf')
 LabelBase.register(name='Kalam', fn_regular='assets/Kalam-Regular.ttf')
+LabelBase.register(name='Ubuntu', fn_regular='assets/UbuntuMono.ttf')
 
 Config.set('graphics', 'width', '480')
 Config.set('graphics', 'height', '720')
