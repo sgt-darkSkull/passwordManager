@@ -1,0 +1,72 @@
+<SignupScreen>:
+	BoxLayout:
+		orientation: "vertical"
+		KvPreviousButtonUi:
+			on_release: root.back_main_screen()
+		SignupLayout:
+
+<SignupLayout>:
+	cols: 1
+	rows: 1
+	padding: (dp(20), 0, dp(20), dp(30))
+	BoxLayout:
+		orientation: "vertical"
+		spacing: dp(80)
+		padding: (0, 0, 0, dp(30))
+		Label:
+			text: "New User Signup"
+			font_name: "Kalam"
+			font_size: dp(40)
+			size_hint: 1, .7
+		BoxLayout:
+			size_hint: 1, .9
+			spacing: dp(30)
+			orientation: "vertical"
+			GridLayout:
+				cols: 1
+				rows: 3
+				spacing: dp(30)
+				GridLayout:
+					cols: 2
+					rows: 1
+					Label:
+						text: "Username"
+						font_name: "Kalam"
+						font_size: dp(20)
+					KvTextFieldUi:
+						font_name: "Kalam"
+						font_size: dp(15)
+
+				GridLayout:
+					cols: 2
+					rows: 1
+					Label:
+						text: "Password"
+						font_name: "Kalam"
+						font_size: dp(20)
+					KvTextFieldUi:
+						font_name: "Kalam"
+						password: True
+
+				GridLayout:
+					cols: 2
+					rows: 1
+					Label:
+						text: "Confirm Password"
+						font_name: "Kalam"
+						font_size: dp(20)
+					KvTextFieldUi:
+						font_name: "Kalam"
+						password: True
+		BoxLayout:
+			orientation: "vertical"
+			size_hint: 1, .30
+			GridLayout:
+				cols: 2
+				rows: 1
+				KvRoundButtonUi:
+					button_label_text: "Sign Up"
+					font_name: "Kalam"
+					button_color: .6, .2, .2
+					size_hint: 1, .2
+					on_press: root.validate_signup_request()

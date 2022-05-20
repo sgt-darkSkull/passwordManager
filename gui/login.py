@@ -1,7 +1,7 @@
 from kivy.lang import Builder
 from kivy.uix.gridlayout import GridLayout
 
-from gui.ui_manager import UiManager as ui
+from gui import ui_manager as ui
 from kivy.uix.screenmanager import Screen
 
 Builder.load_file('gui/login.kv')
@@ -14,9 +14,6 @@ class LoginScreen(Screen):
 
 
 class LoginLayout(GridLayout):
-    
-    def __int__(self, **kwargs):
-        super().__int__(**kwargs)
 
     def validate_login_request(self):
         username = self.ids["username"].text

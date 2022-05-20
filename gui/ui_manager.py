@@ -1,7 +1,6 @@
-class UiManager:
+s_manager = None
+screens = dict()
 
-    s_manager = None
-    screens = dict()
 
-    def switch_screen(self,  screen, direction):
-        self.s_manager.switch_to(self.screens[screen], direction=direction)
+def switch_screen(screen, dirct):
+    s_manager.switch_to(screens[screen], direction=dirct)
