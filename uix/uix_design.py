@@ -13,9 +13,9 @@ MDScreen:
         halign: "center"
         pos_hint: {"center_y": 0.8}
         font_style: "H1"
-        font_name:"uix/fonts/PermanentMarker"
-        # font_name:"uix/fonts/RubikDirt"
-        font_size: "45dp"
+        # font_name:"uix/fonts/PermanentMarker"
+        font_name:"uix/fonts/RubikDirt"
+        font_size: "40dp"
     
     MDCard:
         id: login_card

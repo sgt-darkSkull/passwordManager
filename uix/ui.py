@@ -72,12 +72,9 @@ class PasswordManager(MDApp):
             self.userScreen.mdlist.add_widget(item)
 
     def log_in(self):
-        self.screenManager.switch_to(self.userScreen, direction="left")  # REMOVE
-        self.add_items_in_scroll()  # REMOVE
         if self.validate_input():
-            print("Logging In :", self.userInputField.text, self.passwdInputField.text)
+            self.screenManager.switch_to(self.userScreen, direction="left")
             self.add_items_in_scroll()
-            self.screenManager.switch_to(self.mainScreen, direction="right")
 
     def sign_up(self):
         if self.validate_input():
