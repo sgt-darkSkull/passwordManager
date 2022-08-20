@@ -1,0 +1,35 @@
+MDNavigationLayout
+	MDScreenManager
+		MDScreen : main screen
+		MDScreen : user screen
+			MDNavigationLayout
+				MDScreenManager
+					MDScreen
+						MDBoxLayout
+							MDTopAppBar
+							Widget
+	MDNavigationDrawer
+		MDNavigationDrawerMenu
+
+
+
+MDNavigationLayout
+	MDScreenManager
+		MDScreen : main screen
+		MDScreen : user screen
+			MDBoxLayout
+				MDTopAppBar
+				Widget
+	MDNavigationDrawer
+		MDNavigationDrawerMenu
+	MDNavigationDrawer
+		MDNavigationDrawerMenu
+
+LIST
+	MDExpansionPanel:
+		INFO: MDExpansionPanelTwoLine
+		DATA: MDBoxLayout:
+			MDExpansionPanel:
+				INFO: MDExpansionPanelOneLine
+				DATA: MDBoxLayout:
+					TwoLineListItem

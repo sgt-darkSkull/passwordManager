@@ -1,0 +1,43 @@
+{
+	"users_db": {
+		"riva": {
+			"name": "Riva Ishikawa",
+			"password": "Ishk_Riva"
+		},
+		"ishikawa": {
+			"name": "Ishikawa Riva",
+			"password": "darkest past"
+		},
+		"dummy": {
+			"name": "Dummy User",
+			"password": "testuser"
+		}
+	},
+	"password_db": {
+		"riva": {
+			"website1.com": {
+				"account1@mail1.com": "password 1",
+				"account2@mail2.com": "password 2",
+				"account3@mail3.com": "password 3"
+			},
+			"website2.net": {
+				"account1@mail1.com": "no-password_enc",
+				"account@mailcom": "np_test_password"
+			},
+			"secret.website.io": {
+				"account@website.io": "password_pass"
+			}
+		},
+		"ishikawa": {
+			"website2.com": {
+				"account_super@gmail.com": "get lost Mr.",
+				"no_account@spmail.com": "black_mailerPassword##"
+			}
+		},
+		"dummy": {
+			"test.site.com": {
+				"account": "password"
+			}
+		}
+	}
+}
